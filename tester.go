@@ -1,6 +1,7 @@
 package main
 
 import (
+	"crypto/tls"
 	"flag"
 	"fmt"
 	goldap "github.com/jbuchbinder/goldap"
@@ -18,6 +19,7 @@ var (
 	LdapSearch   = flag.String("ldapsearch", "", "LDAP search string")
 	Threads      = flag.Int("threads", 1, "Test threads")
 	Delay        = flag.Int("delay", 5000, "Delay randomization")
+	LaxSsl       = flag.Bool("laxssl", false, "Use lax SSL restrictions")
 )
 
 func main() {
@@ -38,7 +40,10 @@ func testBind(threadId int, l *goldap.Conn) {
 	t := NewTimer()
 	var err *goldap.Error
 	if *LdapSsl {
-		l, err = goldap.DialSSL("tcp", fmt.Sprintf("%s:%d", *LdapHost, *LdapPort))
+		tlsConfig := &tls.Config{
+			InsecureSkipVerify: *LaxSsl,
+		}
+		l, err = goldap.DialSSLConfig("tcp", fmt.Sprintf("%s:%d", *LdapHost, *LdapPort), tlsConfig)
 	} else {
 		l, err = goldap.Dial("tcp", fmt.Sprintf("%s:%d", *LdapHost, *LdapPort))
 	}
