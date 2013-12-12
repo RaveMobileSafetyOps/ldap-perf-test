@@ -26,7 +26,6 @@ func (self *BTimer) End() {
 func (self *BTimer) String() string {
 	if self.Ended {
 		return fmt.Sprintf("dur: %s (start: %s / end: %s)", self.Duration.String(), self.StartTime.String(), self.EndTime.String())
-	} else {
-		return fmt.Sprintf("dur: %s (start: %s / IN PROGRESS)", time.Since(self.StartTime).String(), self.StartTime.String())
 	}
+	return fmt.Sprintf("dur: %s (start: %s / IN PROGRESS)", time.Since(self.StartTime).String(), self.StartTime.String())
 }
