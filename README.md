@@ -2,6 +2,8 @@
 
 [![Build Status](https://secure.travis-ci.org/jbuchbinder/ldap-perf-test.png)](http://travis-ci.org/jbuchbinder/ldap-perf-test)
 
+[![Gobuild Download](http://gobuild.io/badge/github.com/jbuchbinder/ldap-perf-test/downloads.svg)](http://gobuild.io/github.com/jbuchbinder/ldap-perf-test)
+
 ## Building
 
 ```
