@@ -4,9 +4,10 @@ import (
 	"crypto/tls"
 	"flag"
 	"fmt"
-	goldap "github.com/jbuchbinder/goldap"
 	"math/rand"
 	"time"
+
+	goldap "github.com/jbuchbinder/goldap"
 )
 
 var (
